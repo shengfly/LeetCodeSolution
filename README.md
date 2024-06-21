@@ -1,3 +1,9 @@
+# 计划
+
+参考资料：
+
+[算法通关手册（LeetCode)](https://github.com/itcharge/LeetCode-Py)
+
 # LeetCode拍案惊奇
 
 技巧：O(1) 删除元素： 将待删除元素与最后一位交换，然后删除最后一位，其他的元素不需要移动。
