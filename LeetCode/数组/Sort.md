@@ -72,7 +72,7 @@ def QuickSort(nums,left,right):
     QuickSort(nums,left,l-1)        # 然后去排序哨兵左边的数组
     QuickSort(nums,l+1，right)      # 然后去排序哨兵右边的数组 
 ```
-桶排序算法
+# 桶排序算法
 ```python
 def BucketSort(nums,bucket_size=10):
     '''
