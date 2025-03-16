@@ -123,3 +123,29 @@ def CountingSort(nums):
         buckets[num-min_value] -= 1
     return results
 ```
+
+# 基数排序 
+```python
+def RadixSort(nums):
+    if len(nums) == 0: return nums # 检查输入
+    #第1步： 对于按照值排序的算法，要知道最大的“位数”
+    #       把最大值转化成字符，求其长度
+    numRadix = len(str(max(nums)))
+    #第2步： 从最低位开始，每个位数都进行“桶排序”
+    for i in range(numRadix):
+        # 定义桶
+        buckets = [[] for _ in range(10)]
+        # 遍历每个元素，计算桶的位置
+        for num in nums:
+            # 注意：学习如何计算数字的第i位的数字
+            index = (num//(10**i))%10
+            buckets[index].append(num)
+        # 依次取出桶内的元素
+        nums = [] # 重新初始化数组
+        for n in range(10):
+            bucket = buckets[n]
+            # 依次取出桶的元素，加入到新的数组中
+            for num in bucket:
+                nums.append(num)
+    return nums
+```
