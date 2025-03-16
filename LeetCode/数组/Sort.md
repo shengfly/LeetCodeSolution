@@ -72,3 +72,27 @@ def QuickSort(nums,left,right):
     QuickSort(nums,left,l-1)        # 然后去排序哨兵左边的数组
     QuickSort(nums,l+1，right)      # 然后去排序哨兵右边的数组 
 ```
+桶排序算法
+```python
+def BucketSort(nums,bucket_size=10):
+    '''
+    需要预先定义桶的大小： bucket_size
+    '''
+    if len(nums) == 0: return nums # 检查输入
+    #第1步： 对于按照值排序的算法，要预先直到数组中值的范围（最小值，最大值）
+    min_value,max_value = min(nums),max(nums)
+    #第2步： 计算桶的数量
+    bucket_count = (max_value-min_value)//bucket_size+1
+    # 创建空桶
+    buckets = [[] for _ in range(bucket_count)]
+    # 第3步： 将数组中的元素放在桶里
+    for num in nums:
+        index = (num-min_value) // bucket_size
+        buckets[index].append(index)
+    # 第4步： 对每个桶单独进行排序，可以选用各种不同的排序算法
+    results = []
+    for n in range(bucket_count):
+        buckets[n].sort() # 这里可以是任何排序算法
+        results.extend(buckets[n])
+    return results
+```
