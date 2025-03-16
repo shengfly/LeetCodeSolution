@@ -96,3 +96,30 @@ def BucketSort(nums,bucket_size=10):
         results.extend(buckets[n])
     return results
 ```
+# 计数排序
+```python
+def CountingSort(nums):
+    if len(nums) == 0: return nums # 检查输入
+    #第1步： 对于按照值排序的算法，要预先直到数组中值的范围（最小值，最大值）
+    min_value,max_value = min(nums),max(nums)
+    #第2步： 计算桶的数量
+    bucket_count = max_value-min_value + 1
+    # 创建空桶，每个桶的初始数值为0
+    buckets = [0 for _ in range(bucket_count)]
+    # 第3步： 统计元素出现的次数
+    for num in nums:
+        index = num - min_vale
+        buckets[index] += 1
+    # 第4步： 将桶转换成累加数组，为了方便计算在最后排好序的数组中出现的位置
+    for i in range(1,bucket_count):
+        buckets[i] += buckets[i-1]
+    # 第5步：要反向填充输出的数组
+    results = [0 for _ in range(len(nums))]
+    for i in range(len(nums)-1,-1,-1):
+        num = nums[i]
+        # 计算数值num在最后数组中出现的位置
+        index = buckets[num-min_value]-1
+        results[index] = num
+        buckets[num-min_value] -= 1
+    return results
+```
