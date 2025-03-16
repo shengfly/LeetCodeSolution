@@ -42,6 +42,7 @@ def MergeSort(nums):
 ```
 # 快速排序算法 
 
+```python
 def QuickSort(nums,left,right):
     '''
     注意输入的参数，这里假设数组的边界
@@ -79,3 +80,4 @@ def QuickSort(nums,left,right):
     QuickSort(nums,left,l-1)
     # 然后去排序哨兵右边的数组
     QuickSort(nums,l+1，right)
+```
